@@ -1,28 +1,35 @@
-var width = 1200, height = 800;
-var giIndex = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
-var gL = [5, 10, 15, 20, 25, 30];
+var margin = { top: 20, right: 20, bottom: 30, left: 40 },
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
-var GLscale = d3.scaleLinear()
-        .domain([0, d3.max(gL)])
-        .range([0, width - 100]);
+var x = d3.scaleLinear()
+        .range([0, width-150]);
 
-var GIscale = d3.scaleLinear()
-        .domain([0, d3.max(giIndex)])
-        .range([1600 / 2, 0]);
+var y = d3.scaleLinear()
+        .range([height, 0]);
 
-var x_axis = d3.axisBottom()
-        .scale(GLscale);
+var xAxis = d3.axisBottom()
+        .scale(x);
 
-var y_axis = d3.axisLeft()
-        .scale(GIscale);
+var yAxis = d3.axisLeft()
+        .scale(y);
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 var symbols = d3.scaleOrdinal(d3.symbols);
-var symbol = d3.symbol().size(100);  //create symbols
+
+// creates a generator for symbols
+var symbol = d3.symbol().size(70);
 
 
-//d3.select("#carbsindex").append('g');
-var tooltip = d3.select("#carbsindex").append("div")
+//const svg = d3.select("#carbsindex").append('g');
+
+var svg = d3.select("#carbsindex").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
 
@@ -33,36 +40,40 @@ d3.csv('food.csv', function (error, data) {
                 d.load = +d.load;
         });
 
-        GIscale.domain(d3.extent(data, function (d) {
-                return d.index;
-        })).nice();
 
-        GLscale.domain(d3.extent(data, function (d) {
+        x.domain(d3.extent(data, function (d) {
                 return d.load;
         })).nice();
 
-        const svg = d3.select("#carbsindex").append('g');
+        y.domain(d3.extent(data, function (d) {
+                return d.index;
+        })).nice();
 
-        svg
-                .attr("transform", "translate(50,10)")
-                .call(y_axis);
 
         svg.append('g')
-                .attr("transform", "translate(0," + height + ")")
-                .call(x_axis);
+                .attr('transform', 'translate(0,' + height + ')')
+                .attr('class', 'x axis')
+                .call(xAxis);
+
+        svg.append('g')
+                .attr('transform', 'translate(0,0)')
+                .attr('class', 'y axis')
+                .call(yAxis);
 
         svg.append('text')
                 .attr('x', 10)
                 .attr('y', 10)
                 .attr('class', 'label')
-                .text('Hyperglycemic index');
+                .style("font-size", 30)
+                .text('HyperGlycemic Index');
 
         svg.append('text')
                 .attr('x', width)
                 .attr('y', height - 10)
                 .attr('text-anchor', 'end')
                 .attr('class', 'label')
-                .text('Hyperglycemic Load');
+                .style("font-size", 30)
+                .text('HyperGlycemic Load');
 
         // we use the ordinal scale symbols to generate symbols
         // such as d3.symbolCross, etc..
@@ -74,7 +85,7 @@ d3.csv('food.csv', function (error, data) {
                 .attr("d", function (d, i) { return symbol.type(symbols(d.type))(); })
                 .style("fill", function (d) { return color(d.type); })
                 .attr("transform", function (d) {
-                        return "translate(" + GLscale(d.load) + "," + GIscale(d.index) + ")";
+                        return "translate(" + x(d.load) + "," + y(d.index) + ")";
                 });
 
         var clicked = ""
@@ -112,6 +123,6 @@ d3.csv('food.csv', function (error, data) {
                 .attr("y", 9)
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
-                .style("color", "black")
                 .text(function (d) { return d; });
-})
+
+});
