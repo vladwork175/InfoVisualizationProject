@@ -65,7 +65,7 @@ d3.csv('food.csv', function (error, data) {
                 .attr('y', 10)
                 .attr('class', 'label')
                 .style("font-size", 10)
-                .text('HyperGlycemic Index');
+                .text('Values > 70 indicate high GI');
 
         svg.append('text')
                 .attr('x', width)
@@ -73,7 +73,7 @@ d3.csv('food.csv', function (error, data) {
                 .attr('text-anchor', 'end')
                 .attr('class', 'label')
                 .style("font-size", 10)
-                .text('HyperGlycemic Load');
+                .text('Values > 20 indicate high GL');
 
         // we use the ordinal scale symbols to generate symbols
         // such as d3.symbolCross, etc..
