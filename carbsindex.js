@@ -1,4 +1,4 @@
-var margin = { top: 20, right: 20, bottom: 30, left: 40 },
+var margin = { top: 20, right: 20, bottom: 30, left: 30 },
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
@@ -64,7 +64,7 @@ d3.csv('food.csv', function (error, data) {
                 .attr('x', 10)
                 .attr('y', 10)
                 .attr('class', 'label')
-                .style("font-size", 30)
+                .style("font-size", 10)
                 .text('HyperGlycemic Index');
 
         svg.append('text')
@@ -72,7 +72,7 @@ d3.csv('food.csv', function (error, data) {
                 .attr('y', height - 10)
                 .attr('text-anchor', 'end')
                 .attr('class', 'label')
-                .style("font-size", 30)
+                .style("font-size", 10)
                 .text('HyperGlycemic Load');
 
         // we use the ordinal scale symbols to generate symbols
