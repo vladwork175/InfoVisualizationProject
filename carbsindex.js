@@ -29,18 +29,27 @@ var svg = d3.select("#carbsindex").append("svg")
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var svgextension = d3.select("#carbsindex");
+
 var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
+       
 
 d3.csv('food.csv', function (error, data) {
+        for (var i = 0; i < data.length; i++)
+        {
+            console.log(data[i].name);
+            console.log(data[i].index);
+            console.log(data[i].type);
+        }
         data.forEach(function (d) {
                 d.name = +d.name;
                 d.index = +d.index;
                 d.load = +d.load;
         });
 
-
+        
         x.domain(d3.extent(data, function (d) {
                 return d.load;
         })).nice();
@@ -74,7 +83,24 @@ d3.csv('food.csv', function (error, data) {
                 .attr('class', 'label')
                 .style("font-size", 10)
                 .text('Values > 20 indicate high GL');
-
+        
+        svgextension.append('text')
+                .attr('x', 1100)
+                .attr('y', 30)
+                .attr('class', 'selection')
+                .style("font-size", 16)
+                .style("font-weight", "bold")
+                .text('Selection: ');
+        
+        svgextension.append('text')
+                .attr('x', 1180)
+                .attr('y', 30)
+                .attr('class', 'selectedcarbinfo')
+                .style("font-size", 16)
+                .style("font-weight", "bold")
+                .text('Banana');
+                
+        
         // we use the ordinal scale symbols to generate symbols
         // such as d3.symbolCross, etc..
         // -> symbol.type(d3.symbolCross)()
@@ -124,5 +150,25 @@ d3.csv('food.csv', function (error, data) {
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
                 .text(function (d) { return d; });
-
+        
+        function selectDataPoint(){
+            d3.select(this)
+                    .style("fill", "black");
+            
+            d3.select(".selectedcarbinfo")
+                    .text('White Bread (Test)');
+        }
+        
+        function unselectDataPoint() 
+        {
+            d3.select(this)
+                    .style("fill", function(d){ return color(d.type); }); 
+            
+            d3.select(".selectedcarbinfo")
+                    .text(' ');
+        }
+        
+        svgextension.selectAll(".symbol")
+                .on("mouseover", selectDataPoint)
+                .on("mouseout", unselectDataPoint);
 });
