@@ -37,12 +37,7 @@ var tooltip = d3.select("body").append("div")
        
 
 d3.csv('food.csv', function (error, data) {
-        for (var i = 0; i < data.length; i++)
-        {
-            console.log(data[i].name);
-            console.log(data[i].index);
-            console.log(data[i].type);
-        }
+        
         data.forEach(function (d) {
                 d.name = +d.name;
                 d.index = +d.index;
@@ -100,6 +95,21 @@ d3.csv('food.csv', function (error, data) {
                 .style("font-weight", "bold")
                 .text('Banana');
                 
+        svgextension.append('text')
+                .attr('x', 1180)
+                .attr('y', 50)
+                .attr('class', 'selectedcarbGI')
+                .style("font-size", 16)
+                .style("font-weight", "bold")
+                .text('Hyperglycemic Index: ');
+        
+        svgextension.append('text')
+                .attr('x', 1180)
+                .attr('y', 70)
+                .attr('class', 'selectedcarbGL')
+                .style("font-size", 16)
+                .style("font-weight", "bold")
+                .text('Hyperglycemic Load: ');
         
         // we use the ordinal scale symbols to generate symbols
         // such as d3.symbolCross, etc..
@@ -110,6 +120,9 @@ d3.csv('food.csv', function (error, data) {
                 .attr("class", "symbol")
                 .attr("d", function (d, i) { return symbol.type(symbols(d.type))(); })
                 .style("fill", function (d) { return color(d.type); })
+                .attr("id", function (d) { return d.food; })
+                .attr("index", function (d) { return d.index; })
+                .attr("load", function (d) { return d.load; })
                 .attr("transform", function (d) {
                         return "translate(" + x(d.load) + "," + y(d.index) + ")";
                 });
@@ -151,24 +164,43 @@ d3.csv('food.csv', function (error, data) {
                 .style("text-anchor", "end")
                 .text(function (d) { return d; });
         
-        function selectDataPoint(){
+        function selectDataPoint()
+        { 
             d3.select(this)
-                    .style("fill", "black");
+                    .style("fill", "black")
+            
+            var carbselected = d3.select(this).attr("id");
+            var carbselectedGI = d3.select(this).attr("index");
+            var carbselectedGL = d3.select(this).attr("load");
             
             d3.select(".selectedcarbinfo")
-                    .text('White Bread (Test)');
+                    .text(carbselected);          
+            
+            d3.select(".selectedcarbGI")
+                    .text("Hyperglycemic Index: " + carbselectedGI);
+            
+            d3.select(".selectedcarbGL")
+                    .text("Hyperglycemix Load: " + carbselectedGL);
         }
         
         function unselectDataPoint() 
         {
             d3.select(this)
-                    .style("fill", function(d){ return color(d.type); }); 
+                    .style("fill", function(d){ return color(d.type); })
             
             d3.select(".selectedcarbinfo")
-                    .text(' ');
+                    .text(" ");
+            
+            d3.select(".selectedcarbGI")
+                    .text(" ");
+            
+            d3.select(".selectedcarbGL")
+                    .text(" ");
         }
         
         svgextension.selectAll(".symbol")
                 .on("mouseover", selectDataPoint)
                 .on("mouseout", unselectDataPoint);
+        
+
 });
