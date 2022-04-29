@@ -87,7 +87,7 @@ d3.csv('food.csv', function (error, data) {
                 .attr("class", "symbol")
                 .attr("d", function (d, i) { return symbol.type(symbols(d.type))(); })
                 .style("fill", function (d) { return color(d.type); })
-                .attr("id", function (d) { return d.food; })
+                .attr("fname", function (d) { return d.food; })
                 .attr("index", function (d) { return d.index; })
                 .attr("load", function (d) { return d.load; })
                 .attr('stroke', '#000')
