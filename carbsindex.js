@@ -123,6 +123,8 @@ d3.csv('food.csv', function (error, data) {
                 .attr("id", function (d) { return d.food; })
                 .attr("index", function (d) { return d.index; })
                 .attr("load", function (d) { return d.load; })
+                .attr('stroke','#000')
+		.attr('stroke-width',.8)
                 .attr("transform", function (d) {
                         return "translate(" + x(d.load) + "," + y(d.index) + ")";
                 });
