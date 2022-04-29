@@ -206,16 +206,12 @@ d3.csv('food.csv', function (error, data) {
         
 
 });
-padding = 15;
-// Create the svg:defs element and the main gradient definition.
+
 var svgDefs = svg.append('defs');
 
 var mainGradient = svgDefs.append('linearGradient')
     .attr('id', 'mainGradient')
     .style("transform", "rotate(90deg)");
-
-// Create the stops of the main gradient. Each stop will be assigned
-// a class to style the stop using CSS.
 mainGradient.append('stop')
     .attr('class', 'stop-bottom')
     .attr('offset', '0');
@@ -224,7 +220,6 @@ mainGradient.append('stop')
     .attr('class', 'stop-top')
     .attr('offset', '1');
 
-// Use the gradient to set the shape fill, via CSS.
 svg.append('rect')
     .classed('filled', true)
     .attr('x', 0)
