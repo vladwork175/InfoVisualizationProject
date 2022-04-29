@@ -15,12 +15,18 @@ body {
 
 .tooltip {
     position: absolute;
-    top: 300px;
-    right: 50px;
+    top: 275px;
+    right: 200px;
     color: black;
-    width: 200px;
-    height: 28px;
-    
+    width: 480px;
+    height: 100px;
+    border-style: solid;    
+}
+
+.displayinfo
+{
+    font-size: 14px;
+    padding-left: 10px
 }
 
 #h1GL

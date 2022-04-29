@@ -32,7 +32,7 @@ var svgextension = d3.select("#carbsindex");
 
 var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
-        .style("opacity", 0);
+        //.style("opacity", 0);
 
 
 d3.csv('food.csv', function (error, data) {
@@ -80,39 +80,7 @@ d3.csv('food.csv', function (error, data) {
                 .style("font-size", 10)
                 .text('Values > 20 indicate high GL');
 
-        svgextension.append('text')
-                .attr('x', 1100)
-                .attr('y', 30)
-                .attr('class', 'selection')
-                .style("font-size", 16)
-                .style("font-weight", "bold")
-                .text('Selection: ');
-
-        svgextension.append('text')
-                .attr('x', 1180)
-                .attr('y', 30)
-                .attr('class', 'selectedcarbinfo')
-                .style("font-size", 16)
-                .style("font-weight", "bold")
-                .text('Banana');
-
-        svgextension.append('text')
-                .attr('x', 1180)
-                .attr('y', 50)
-                .attr('class', 'selectedcarbGI')
-                .style("font-size", 16)
-                .style("font-weight", "bold")
-                .text('Hyperglycemic Index: ');
-
-        svgextension.append('text')
-                .attr('x', 1180)
-                .attr('y', 70)
-                .attr('class', 'selectedcarbGL')
-                .style("font-size", 16)
-                .style("font-weight", "bold")
-                .text('Hyperglycemic Load: ');
-
-                
+    
         svg.selectAll("symbol")
                 .data(data)
                 .enter().append("path")
@@ -167,6 +135,24 @@ d3.csv('food.csv', function (error, data) {
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
                 .text(function (d) { return d; });
+        
+        d3.select(".tooltip")
+                .append("p")
+                .text("Food: ")
+                .attr("id", "displayname")
+                .attr("class", "displayinfo");
+        
+        d3.select(".tooltip")
+                .append("p")
+                .text("Hyperglycemic Index: ")
+                .attr("id", "displayindex")
+                .attr("class", "displayinfo");
+        
+        d3.select(".tooltip")
+                .append("p")
+                .text(" " + "Hyperglycemic Load: ")
+                .attr("id", "displayload")
+                .attr("class", "displayinfo");
 
         function selectDataPoint() {
                 d3.select(this)
@@ -176,13 +162,13 @@ d3.csv('food.csv', function (error, data) {
                 var carbselectedGI = d3.select(this).attr("index");
                 var carbselectedGL = d3.select(this).attr("load");
 
-                d3.select(".selectedcarbinfo")
-                        .text(carbselected);
+                d3.select("#displayname")
+                        .text("Food: " + carbselected);
 
-                d3.select(".selectedcarbGI")
+                d3.select("#displayindex")
                         .text("Hyperglycemic \nIndex: " + carbselectedGI);
 
-                d3.select(".selectedcarbGL")
+                d3.select("#displayload")
                         .text("Hyperglycemic Load: " + carbselectedGL);
         }
 
@@ -190,14 +176,14 @@ d3.csv('food.csv', function (error, data) {
                 d3.select(this)
                         .style("fill", function (d) { return color(d.type); })
 
-                d3.select(".selectedcarbinfo")
-                        .text(" ");
+                d3.select("#displayname")
+                        .text("Food: ");
 
-                d3.select(".selectedcarbGI")
-                        .text(" ");
+                d3.select("#displayindex")
+                        .text("Hyperglycemic Index: ");
 
-                d3.select(".selectedcarbGL")
-                        .text(" ");
+                d3.select("#displayload")
+                        .text("Hyperglycemic Load: ");
         }
 
         svgextension.selectAll(".symbol")
@@ -213,6 +199,7 @@ d3.csv('food.csv', function (error, data) {
                 .duration(2000)
                 .attr("opacity", "1")
                 .call(xAxis);
+                
 
 });
 
