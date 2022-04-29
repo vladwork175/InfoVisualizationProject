@@ -20,25 +20,27 @@ body {
     color: black;
     width: 200px;
     height: 28px;
+    
 }
 
 #h1GL
 {
     position: absolute;
     top: 600px;
-    left: 575px;   
+    left: 465px;   
 }
 
 #h1GI
 {
     position: absolute;
     top: 315px;
+    transform: rotate(-90deg);
 }
 
 svg
 {
     position: absolute;
-    left: 200px;
+    left: 125px;
     top: 100px;
 }
 
@@ -49,5 +51,15 @@ h1
 
 
 
+.stop-bottom {
+    stop-color: #0026ff;  /* Indigo */
+}
 
+.stop-top {
+    stop-color: #ff9900;  /* Teal */
+}
+
+.filled {
+    fill: url(#mainGradient);
+}
 

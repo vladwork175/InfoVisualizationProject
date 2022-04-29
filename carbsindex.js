@@ -139,7 +139,7 @@ d3.csv('food.csv', function (error, data) {
                 .style("fill", function (d) { return color(d); })
                 .attr("d", function (d, i) { return symbol.type(symbols(d))(); })
                 .attr("transform", function (d, i) {
-                        return "translate(" + (width - 10) + "," + 10 + ")";
+                        return "translate(" + (width - 5) + "," + 10 + ")";
                 })
                 .on("click", function (d) {
                         d3.selectAll(".symbol").style("opacity", 1)
@@ -158,7 +158,7 @@ d3.csv('food.csv', function (error, data) {
                 });
 
         legend.append("text")
-                .attr("x", width - 24)
+                .attr("x", width - 15 )
                 .attr("y", 9)
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
@@ -177,10 +177,10 @@ d3.csv('food.csv', function (error, data) {
                     .text(carbselected);          
             
             d3.select(".selectedcarbGI")
-                    .text("Hyperglycemic Index: " + carbselectedGI);
+                    .text("Hyperglycemic \nIndex: " + carbselectedGI);
             
             d3.select(".selectedcarbGL")
-                    .text("Hyperglycemix Load: " + carbselectedGL);
+                    .text("Hyperglycemic Load: " + carbselectedGL);
         }
         
         function unselectDataPoint() 
@@ -201,6 +201,35 @@ d3.csv('food.csv', function (error, data) {
         svgextension.selectAll(".symbol")
                 .on("mouseover", selectDataPoint)
                 .on("mouseout", unselectDataPoint);
+
+
         
 
 });
+padding = 15;
+// Create the svg:defs element and the main gradient definition.
+var svgDefs = svg.append('defs');
+
+var mainGradient = svgDefs.append('linearGradient')
+    .attr('id', 'mainGradient')
+    .style("transform", "rotate(90deg)");
+
+// Create the stops of the main gradient. Each stop will be assigned
+// a class to style the stop using CSS.
+mainGradient.append('stop')
+    .attr('class', 'stop-bottom')
+    .attr('offset', '0');
+
+mainGradient.append('stop')
+    .attr('class', 'stop-top')
+    .attr('offset', '1');
+
+// Use the gradient to set the shape fill, via CSS.
+svg.append('rect')
+    .classed('filled', true)
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', width-150)
+    .style('opacity', .70)
+    .attr('height', height);
+
