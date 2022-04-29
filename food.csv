@@ -1,4 +1,4 @@
-name,index,load,type,Serving
+food,index,load,type,Serving
 "Banana cake, made with sugar",47,14,Bread and Bakery,60
 "Banana cake, made without sugar",55,12,Bread and Bakery,60
 "Sponge cake, plain",46,17,Bread and Bakery,63
