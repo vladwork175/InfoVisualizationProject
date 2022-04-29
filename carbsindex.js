@@ -158,7 +158,7 @@ d3.csv('food.csv', function (error, data) {
                 d3.select(this)
                         .style("fill", "black")
 
-                var carbselected = d3.select(this).attr("id");
+                var carbselected = d3.select(this).attr("fname");
                 var carbselectedGI = d3.select(this).attr("index");
                 var carbselectedGL = d3.select(this).attr("load");
 
