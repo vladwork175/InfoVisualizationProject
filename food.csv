@@ -1,26 +1,26 @@
 name,index,load,type,Serving
-"Banana cake, made with sugar",47,14,Bread and Bakery products,60
-"Banana cake, made without sugar",55,12,Bread and Bakery products,60
-"Sponge cake, plain",46,17,Bread and Bakery products,63
+"Banana cake, made with sugar",47,14,Bread and Bakery,60
+"Banana cake, made without sugar",55,12,Bread and Bakery,60
+"Sponge cake, plain",46,17,Bread and Bakery,63
 "Vanilla cake made from packet mix with vanilla
- frosting (Betty Crocker)",42,24,Bread and Bakery products,111
-"Apple, made with sugar",44,13,Bread and Bakery products,60
-"Apple, made without sugar",48,9,Bread and Bakery products,60
-"Waffles, Aunt Jemima (Quaker Oats)",76,10,Bread and Bakery products,35
-"Bagel, white, frozen",72,25,Bread and Bakery products,70
-"Baguette, white, plain",95,15,Bread and Bakery products,30
-"Coarse barley bread, 75-80% kernels, average",34,7,Bread and Bakery products,30
-Hamburger bun,61,9,Bread and Bakery products,30
-Kaiser roll,73,12,Bread and Bakery products,30
-Pumpernickel bread,56,7,Bread and Bakery products,30
-50% cracked wheat kernel bread,58,12,Bread and Bakery products,30
-White wheat flour bread,71,10,Bread and Bakery products,30
-"WonderTM bread, average",73,10,Bread and Bakery products,30
-"Whole wheat bread, average",71,9,Bread and Bakery products,30
-100% Whole GrainTM bread (Natural Ovens),51,7,Bread and Bakery products,30
-"Pita bread, white",68,10,Bread and Bakery products,30
-Corn tortilla,52,12,Bread and Bakery products,50
-Wheat tortilla,30,8,Bread and Bakery products,50
+ frosting (Betty Crocker)",42,24,Bread and Bakery,111
+"Apple, made with sugar",44,13,Bread and Bakery,60
+"Apple, made without sugar",48,9,Bread and Bakery,60
+"Waffles, Aunt Jemima (Quaker Oats)",76,10,Bread and Bakery,35
+"Bagel, white, frozen",72,25,Bread and Bakery,70
+"Baguette, white, plain",95,15,Bread and Bakery,30
+"Coarse barley bread, 75-80% kernels, average",34,7,Bread and Bakery,30
+Hamburger bun,61,9,Bread and Bakery,30
+Kaiser roll,73,12,Bread and Bakery,30
+Pumpernickel bread,56,7,Bread and Bakery,30
+50% cracked wheat kernel bread,58,12,Bread and Bakery,30
+White wheat flour bread,71,10,Bread and Bakery,30
+"WonderTM bread, average",73,10,Bread and Bakery,30
+"Whole wheat bread, average",71,9,Bread and Bakery,30
+100% Whole GrainTM bread (Natural Ovens),51,7,Bread and Bakery,30
+"Pita bread, white",68,10,Bread and Bakery,30
+Corn tortilla,52,12,Bread and Bakery,50
+Wheat tortilla,30,8,Bread and Bakery,50
 "Coca Cola®, average",63,16,Beverages,250 mL
 "Fanta®, orange soft drink",68,23,Beverages,250 mL
 "Lucozade®, original (sparkling glucose drink)",95,40,Beverages,250 mL
@@ -99,15 +99,14 @@ Fruit Roll-Ups®,99,24,Snacks,30
 "Potato chips, average",51,12,Snacks,50
 "Pretzels, oven-baked",83,16,Snacks,30
 Snickers Bar®,51,18,Snacks,60
-VEGETABLES,,,Snacks,
-"Green peas, average",51,4,Snacks,80
-"Carrots, average",35,2,Snacks,80
-Parsnips,52,4,Snacks,80
-"Baked russet potato, average",111,33,Snacks,150
-"Boiled white potato, average",82,21,Snacks,150
-"Instant mashed potato, average",87,17,Snacks,150
-"Sweet potato, average",70,22,Snacks,150
-"Yam, average",54,20,Snacks,150
+"Green peas, average",51,4,Vegetables,80
+"Carrots, average",35,2,Vegetables,80
+Parsnips,52,4,Vegetables,80
+"Baked russet potato, average",111,33,Vegetables,150
+"Boiled white potato, average",82,21,Vegetables,150
+"Instant mashed potato, average",87,17,Vegetables,150
+"Sweet potato, average",70,22,Vegetables,150
+"Yam, average",54,20,Vegetables,150
 Hummus (chickpea salad dip),6,0,MISC,30
 "Chicken nuggets, frozen, reheated in microwave
  oven 5 min",46,7,MISC,100
