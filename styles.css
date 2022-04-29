@@ -52,11 +52,11 @@ h1
 
 
 .stop-bottom {
-    stop-color: #0026ff;  /* Indigo */
+    stop-color: #ff9900;/* Indigo */
 }
 
 .stop-top {
-    stop-color: #ff9900;  /* Teal */
+    stop-color: #0026ff;  /* Teal */
 }
 
 .filled {
