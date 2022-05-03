@@ -24,7 +24,7 @@ body {
 }
 
 #title {
-    position:fixed;
+    position:absolute;
     
     top: 50px;
     left: 350px;
