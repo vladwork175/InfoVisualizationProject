@@ -30,6 +30,27 @@ body {
     left: 350px;
 }
 
+#source {
+    position: absolute;
+    top: 530px;
+    left: 480px;
+}
+
+ /* unvisited link */
+ a:link {
+    color: cyan;
+}
+
+/* visited link */
+a:visited {
+    color: black;
+}
+
+/* mouse over link */
+a:hover {
+    color: magenta;
+}
+
 .displayinfo
 {
     font-size: 14px;
